@@ -1,24 +1,13 @@
 const Joi = require('joi');
-const ObjectId = require('bson').ObjectId;
+const joiObjectId = require('./src/ObjectId');
+const hash = require('./src/hash');
 
-let joiObjectId = [{
-    name: 'objectId',
-    language: {
-        base: 'must be a valid ObjectId'
-    },
-    pre(value, state, options) {
 
-        if (!ObjectId.isValid(value)) {
-            return this.createError('objectId.base', { value }, state, options);
-        }
+function KJoi() {
+    let myJoi = Joi.extend(joiObjectId);
+    myJoi = myJoi.extend(hash)
+    // export default myJoi
+    return myJoi
+}
 
-        if (options.convert) {
-            return new ObjectId(value); // Change the value
-        }
-
-        return value; // Keep the value as it was
-    }
-}];
-
-const myJoi = Joi.extend(joiObjectId);
-module.exports = myJoi
+module.exports = KJoi
