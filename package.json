@@ -14,8 +14,8 @@
 		"url": "git@github.com:knesk/joi.git"
 	},
 	"dependencies": {
+		"@hapi/joi": "^16.1.7",
 		"bcryptjs": "^2.4.3",
-		"bson": "^4.0.2",
-		"joi": "^14.3.1"
+		"bson": "^4.0.2"
 	}
 }
