@@ -4,14 +4,10 @@
 	"main": "index.js",
 	"author": "Lucian Khanakia <lucian@knesk.com>",
 	"license": "MIT",
-	"description": "Joi Library Extended",
-	"scripts": {
-		"build": "rollup -c",
-		"dev": "rollup -c -w"
-	},
+	"description": "A Extended version of hapi Joi Library",
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:knesk/joi.git"
+		"url": "https://github.com/kneskjs/joi.git"
 	},
 	"dependencies": {
 		"@hapi/joi": "^16.1.7",
