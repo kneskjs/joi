@@ -1,5 +1,5 @@
 {
-	"name": "@knesk/joi",
+	"name": "@kneskjs/joi",
 	"version": "0.0.2",
 	"main": "index.js",
 	"author": "Lucian Khanakia <lucian@knesk.com>",
