@@ -1,13 +1,6 @@
 const Joi = require('@hapi/joi');
-const joiObjectId = require('./src/ObjectId');
-const hash = require('./src/hash');
+const objectId = require('./src/objectId');
 
+let Koi = Joi.extend((joi) => objectId(joi) );
 
-function KJoi() {
-    let myJoi = Joi.extend(joiObjectId);
-    myJoi = myJoi.extend(hash)
-    // export default myJoi
-    return myJoi
-}
-
-module.exports = KJoi
+module.exports = Koi

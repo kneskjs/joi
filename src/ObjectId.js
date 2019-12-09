@@ -2,21 +2,29 @@
 
 const ObjectId = require('bson').ObjectId;
 
-module.exports = {
-    name: 'objectId',
-    language: {
-        base: 'must be a valid ObjectId'
-    },
-    pre(value, state, options) {
+module.exports = function (joi) {
+    return {
+        type: 'objectId',
+        // base: joi.string(),
+        messages: {
+            'valid': '"{{#label}}" must be valid ObjectId',
+        },
+        
+        coerce(value, helpers) {
 
-        if (!ObjectId.isValid(value)) {
-            return this.createError('objectId.base', { value }, state, options);
-        }
+            if (typeof value === 'object') {
+                return;
+            }
 
-        if (options.convert) {
-            return new ObjectId(value); // Change the value
-        }
+            value = ObjectId.isValid(value) ? new ObjectId(value) : value
 
-        return value; // Keep the value as it was
+            return { value };
+        },
+        
+        validate(value, helpers) {
+            if (!ObjectId.isValid(value)) {
+                return { value, errors: helpers.error('valid') };
+            }
+        },
     }
-};
+}
